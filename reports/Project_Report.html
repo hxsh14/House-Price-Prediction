@@ -5,20 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Project Report — California House Price Prediction</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
 
         @page {
             size: A4;
-            margin: 20mm 18mm 20mm 18mm;
+            margin: 14mm 16mm 14mm 16mm;
+        }
+
+        *, *:before, *:after {
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             color: #1e293b;
-            line-height: 1.6;
+            line-height: 1.55;
             margin: 0;
             padding: 0;
             background-color: #f8fafc;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
 
         .document-container {
@@ -26,12 +32,10 @@
             margin: 0 auto;
             background: #ffffff;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            box-sizing: border-box;
         }
 
         .page {
-            padding: 24mm 20mm 20mm 20mm;
-            min-height: 297mm;
+            padding: 16mm 16mm;
             box-sizing: border-box;
             position: relative;
         }
@@ -47,27 +51,27 @@
         .cover-page {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             text-align: center;
-            min-height: 297mm;
+            height: 267mm;
             box-sizing: border-box;
-            padding: 16mm 14mm;
+            padding: 4mm;
         }
 
         .cover-border {
             border: 3px double #1e3a8a;
-            padding: 18mm 14mm;
+            padding: 14mm 12mm;
             height: 100%;
             width: 100%;
-            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            align-items: center;
         }
 
         .college-header {
-            margin-bottom: 25px;
+            margin-top: 5mm;
         }
 
         .college-title {
@@ -76,11 +80,11 @@
             letter-spacing: 0.5px;
             color: #0f172a;
             text-transform: uppercase;
-            margin: 4px 0;
+            margin: 2px 0;
         }
 
         .college-sub {
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-weight: 600;
             color: #334155;
             letter-spacing: 1px;
@@ -93,65 +97,69 @@
             color: #1e3a8a;
             text-transform: uppercase;
             letter-spacing: 1.2px;
-            margin-top: 15px;
-            border-bottom: 1.5px solid #1e3a8a;
+            margin-top: 14px;
+            border-bottom: 2px solid #1e3a8a;
             display: inline-block;
             padding-bottom: 4px;
         }
 
+        .project-center {
+            margin: 15mm 0;
+        }
+
         .project-badge {
-            margin: 35px 0 10px 0;
-            font-size: 1.6rem;
-            font-weight: 700;
+            font-size: 1.7rem;
+            font-weight: 800;
             color: #0f172a;
+            margin: 0;
         }
 
         .project-on {
             font-size: 1rem;
             font-style: italic;
             color: #64748b;
-            margin: 6px 0;
+            margin: 8px 0;
         }
 
         .project-name {
-            font-size: 1.75rem;
+            font-size: 1.65rem;
             font-weight: 800;
             color: #1e3a8a;
             line-height: 1.35;
-            margin: 15px auto;
+            margin: 10px auto;
             max-width: 90%;
         }
 
         .student-details {
-            margin: 35px 0;
+            margin: 8mm 0;
         }
 
         .submitted-by {
             font-size: 0.95rem;
             font-style: italic;
             color: #64748b;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .candidate-name {
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.45rem;
+            font-weight: 800;
             color: #0f172a;
             margin: 4px 0;
         }
 
         .roll-no {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #475569;
         }
 
         .academic-footer {
-            margin-top: 30px;
+            margin-bottom: 6mm;
             font-size: 0.95rem;
             color: #334155;
             line-height: 1.6;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* ---------------------------------------------------- */
@@ -159,7 +167,7 @@
         /* ---------------------------------------------------- */
         .toc-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .toc-title {
@@ -174,7 +182,7 @@
         .toc-sub {
             font-size: 0.85rem;
             color: #64748b;
-            margin-top: 6px;
+            margin-top: 4px;
             font-style: italic;
         }
 
@@ -183,12 +191,12 @@
             color: #ffffff;
             font-weight: 700;
             text-align: center;
-            padding: 10px;
+            padding: 9px;
             font-size: 1.05rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             border-radius: 4px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .toc-list {
@@ -201,31 +209,31 @@
             display: flex;
             align-items: baseline;
             justify-content: space-between;
-            padding: 8px 4px;
-            font-size: 0.95rem;
+            padding: 5px 4px;
+            font-size: 0.92rem;
             border-bottom: 1px dotted #cbd5e1;
         }
 
         .toc-item.level-1 {
-            font-weight: 600;
+            font-weight: 700;
             color: #0f172a;
-            padding-top: 10px;
+            padding-top: 8px;
         }
 
         .toc-item.level-2 {
             padding-left: 20px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: #475569;
         }
 
         .toc-dots {
             flex: 1;
             border-bottom: 1px dotted #94a3b8;
-            margin: 0 10px;
+            margin: 0 8px;
         }
 
         .toc-page {
-            font-weight: 600;
+            font-weight: 700;
             color: #1e3a8a;
         }
 
@@ -233,35 +241,35 @@
         /* General Document Headings & Typography */
         /* ---------------------------------------------------- */
         h1.section-title {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: #1e3a8a;
             margin-top: 0;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 6px;
+            padding-bottom: 4px;
         }
 
         h2.subsection-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #0f172a;
-            margin-top: 22px;
-            margin-bottom: 10px;
-        }
-
-        h3.subsubsection-title {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #334155;
-            margin-top: 16px;
+            margin-top: 18px;
             margin-bottom: 8px;
         }
 
+        h3.subsubsection-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #334155;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
         p {
-            margin: 0 0 12px 0;
+            margin: 0 0 10px 0;
             text-align: justify;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             color: #334155;
         }
 
@@ -271,22 +279,22 @@
         .callout-box {
             border-left: 4px solid #1e3a8a;
             background: #f1f5f9;
-            padding: 12px 16px;
-            margin: 18px 0;
+            padding: 10px 14px;
+            margin: 14px 0;
             border-radius: 0 6px 6px 0;
         }
 
         .callout-title {
             font-size: 0.85rem;
-            font-weight: 700;
+            font-weight: 800;
             color: #1e3a8a;
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .callout-text {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: #334155;
             margin: 0;
         }
@@ -297,21 +305,21 @@
         table.custom-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 16px 0;
-            font-size: 0.88rem;
+            margin: 12px 0 16px 0;
+            font-size: 0.85rem;
         }
 
         table.custom-table th {
             background-color: #1e3a8a;
             color: #ffffff;
             font-weight: 600;
-            padding: 9px 12px;
+            padding: 8px 10px;
             text-align: left;
             border: 1px solid #1e3a8a;
         }
 
         table.custom-table td {
-            padding: 8px 12px;
+            padding: 7px 10px;
             border: 1px solid #cbd5e1;
             color: #334155;
         }
@@ -323,20 +331,20 @@
         .badge-green {
             background: #dcfce7;
             color: #15803d;
-            padding: 2px 8px;
+            padding: 2px 7px;
             border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.82rem;
+            font-weight: 700;
+            font-size: 0.8rem;
             border: 1px solid #86efac;
         }
 
         .badge-blue {
             background: #dbeafe;
             color: #1e40af;
-            padding: 2px 8px;
+            padding: 2px 7px;
             border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.82rem;
+            font-weight: 700;
+            font-size: 0.8rem;
             border: 1px solid #93c5fd;
         }
 
@@ -347,40 +355,43 @@
             background: #ffffff;
             border: 1px solid #cbd5e1;
             border-radius: 6px;
-            padding: 12px 18px;
-            margin: 12px 0 16px 0;
+            padding: 10px 14px;
+            margin: 10px 0 14px 0;
             font-family: 'Merriweather', serif;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             color: #0f172a;
             text-align: center;
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
         }
 
         ul, ol {
-            margin: 0 0 14px 0;
-            padding-left: 24px;
-            font-size: 0.95rem;
+            margin: 0 0 12px 0;
+            padding-left: 22px;
+            font-size: 0.92rem;
             color: #334155;
         }
 
         li {
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             text-align: justify;
         }
 
-        .code-block {
+        pre.code-block {
             background: #0f172a;
             color: #e2e8f0;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 6px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            margin: 14px 0;
-            line-height: 1.45;
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 0.78rem;
+            line-height: 1.4;
+            margin: 10px 0 14px 0;
+            white-space: pre;
             overflow-x: auto;
         }
 
+        /* ---------------------------------------------------- */
         /* Print Specifics */
+        /* ---------------------------------------------------- */
         @media print {
             body {
                 background: none;
@@ -388,10 +399,25 @@
             .document-container {
                 box-shadow: none;
                 max-width: 100%;
+                margin: 0;
+                padding: 0;
             }
             .page {
-                min-height: auto;
-                padding: 18mm 16mm;
+                padding: 0;
+            }
+            .cover-page {
+                height: 268mm !important;
+                max-height: 268mm !important;
+                min-height: 268mm !important;
+                padding: 0 !important;
+            }
+            .cover-border {
+                height: 100% !important;
+                padding: 12mm 10mm !important;
+            }
+            .page-break {
+                page-break-after: always !important;
+                break-after: page !important;
             }
         }
     </style>
@@ -407,12 +433,12 @@
         <div class="cover-border">
             <div class="college-header">
                 <div class="college-title">JSPM's</div>
-                <div class="college-title" style="font-size: 1.45rem;">Rajarshi Shahu College of Engineering</div>
+                <div class="college-title" style="font-size: 1.4rem;">Rajarshi Shahu College of Engineering</div>
                 <div class="college-sub">TATHAWADE, PUNE-411033</div>
                 <div class="dept-title">DEPARTMENT OF COMPUTER ENGINEERING</div>
             </div>
 
-            <div>
+            <div class="project-center">
                 <div class="project-badge">Mini Project</div>
                 <div class="project-on">on</div>
                 <div class="project-name">"California House Price Prediction & Real Estate Valuation System"</div>
@@ -425,10 +451,10 @@
             </div>
 
             <div class="academic-footer">
-                <div><strong>Class and Division:</strong> TY Div A</div>
-                <div><strong>Course:</strong> Machine Learning (Course Code: 310246)</div>
-                <div><strong>Academic Year:</strong> 2026-27</div>
-                <div><strong>(Semester-I)</strong></div>
+                <div>Class and Division: TY Div A</div>
+                <div>Course: Machine Learning (Course Code: 310246)</div>
+                <div>Academic Year: 2026-27</div>
+                <div>(Semester-I)</div>
             </div>
         </div>
     </div>
@@ -518,37 +544,37 @@
             <div class="toc-item level-2">
                 <span>7.2 Mathematical Foundations</span>
                 <span class="toc-dots"></span>
-                <span class="toc-page">Page 8</span>
+                <span class="toc-page">Page 7</span>
             </div>
             <div class="toc-item level-1">
                 <span>8. Implementation</span>
                 <span class="toc-dots"></span>
-                <span class="toc-page">Page 9</span>
+                <span class="toc-page">Page 8</span>
             </div>
             <div class="toc-item level-1">
                 <span>9. Results & Experimental Analysis</span>
                 <span class="toc-dots"></span>
-                <span class="toc-page">Page 10</span>
+                <span class="toc-page">Page 9</span>
             </div>
             <div class="toc-item level-2">
                 <span>9.1 Regression Benchmark Results</span>
                 <span class="toc-dots"></span>
-                <span class="toc-page">Page 10</span>
+                <span class="toc-page">Page 9</span>
             </div>
             <div class="toc-item level-2">
                 <span>9.2 Feature Importance Analysis</span>
                 <span class="toc-dots"></span>
-                <span class="toc-page">Page 11</span>
+                <span class="toc-page">Page 9</span>
             </div>
             <div class="toc-item level-2">
                 <span>9.3 Interactive Web Application Deployment</span>
                 <span class="toc-dots"></span>
-                <span class="toc-page">Page 11</span>
+                <span class="toc-page">Page 10</span>
             </div>
             <div class="toc-item level-1">
                 <span>10. Conclusion & References</span>
                 <span class="toc-dots"></span>
-                <span class="toc-page">Page 12</span>
+                <span class="toc-page">Page 10</span>
             </div>
         </div>
     </div>
@@ -565,7 +591,7 @@
         <p><strong>Course & Lab:</strong> Machine Learning (Course Code: 310246)</p>
         <p><strong>Candidate:</strong> Harshdeep Singh (Roll No: CS3149)</p>
 
-        <h1 class="section-title" style="margin-top: 30px;">2. Abstract</h1>
+        <h1 class="section-title" style="margin-top: 25px;">2. Abstract</h1>
         <p>
             In modern macroeconomics and municipal finance, real estate appraisal is vital for mortgage underwriting, property taxation, and investment portfolios. Traditional manual appraisal methodologies are prone to subjective human bias, localized transaction infrequency, and poor scalability. Furthermore, standard linear econometric techniques struggle to model complex spatial autocorrelation and non-linear interactions between demographic indicators and physical housing characteristics.
         </p>
@@ -574,18 +600,18 @@
         </p>
         <p>The project benchmarks six distinct machine learning algorithms across standardized 5-fold cross-validation and a 20% holdout test split:</p>
         <ol>
-            <li><strong>Median Baseline Regressor:</strong> Empirical lower bound ($RMSE = 0.3558$, $R^2 = -0.0042$).</li>
-            <li><strong>Multiple Linear Regression:</strong> Parametric OLS baseline ($RMSE = 0.2142$, $R^2 = 0.6361$).</li>
-            <li><strong>Ridge Regression:</strong> $L_2$-penalized regularizer mitigating multicollinearity ($RMSE = 0.2142$, $R^2 = 0.6361$).</li>
-            <li><strong>Lasso Regression:</strong> $L_1$-penalized sparse regularizer ($RMSE = 0.2816$, $R^2 = 0.3709$).</li>
-            <li><strong>Random Forest Regressor:</strong> Bagging ensemble of 100 deep decision trees ($RMSE = 0.1611$, $R^2 = 0.7941$).</li>
-            <li><strong>XGBoost Regressor:</strong> Second-order gradient boosted decision trees ($RMSE = 0.1424$, $R^2 = 0.8391$).</li>
+            <li><strong>Median Baseline Regressor:</strong> Empirical lower bound (RMSE = 0.3558, R² = -0.0042).</li>
+            <li><strong>Multiple Linear Regression:</strong> Parametric OLS baseline (RMSE = 0.2142, R² = 0.6361).</li>
+            <li><strong>Ridge Regression:</strong> L2-penalized regularizer mitigating multicollinearity (RMSE = 0.2142, R² = 0.6361).</li>
+            <li><strong>Lasso Regression:</strong> L1-penalized sparse regularizer (RMSE = 0.2816, R² = 0.3709).</li>
+            <li><strong>Random Forest Regressor:</strong> Bagging ensemble of 100 deep decision trees (RMSE = 0.1611, R² = 0.7941).</li>
+            <li><strong>XGBoost Regressor:</strong> Second-order gradient boosted decision trees (RMSE = 0.1424, R² = 0.8391).</li>
         </ol>
 
         <div class="callout-box">
             <div class="callout-title">LEAK-FREE D.A.T.A. PROTOCOL PRINCIPLE</div>
             <div class="callout-text">
-                By enforcing a strict boundary between feature extraction, standard scaling, and model fitting, the pipeline guarantees that test set evaluations remain strictly out-of-sample. Target skewness is addressed using natural logarithmic transformation ($\ln(1 + y)$), ensuring stable optimization and unbiased error distributions.
+                By enforcing a strict boundary between feature extraction, standard scaling, and model fitting, the pipeline guarantees that test set evaluations remain strictly out-of-sample. Target skewness is addressed using natural logarithmic transformation (ln(1 + y)), ensuring stable optimization and unbiased error distributions.
             </div>
         </div>
     </div>
@@ -616,7 +642,7 @@
                 <tr>
                     <th style="width: 28%;">Curricular Topic</th>
                     <th style="width: 36%;">Implemented Technique</th>
-                    <th style="width: 36%;">Curricular Focus & Project Scope</th>
+                    <th style="width: 36%;">Curricular Focus & Scope</th>
                 </tr>
             </thead>
             <tbody>
@@ -627,7 +653,7 @@
                 </tr>
                 <tr>
                     <td><strong>Regularization</strong></td>
-                    <td>Ridge ($L_2$) & Lasso ($L_1$)</td>
+                    <td>Ridge (L2) & Lasso (L1)</td>
                     <td>Penalized cost optimization; combating collinearity and coefficient shrinkage.</td>
                 </tr>
                 <tr>
@@ -680,7 +706,7 @@
             <li><strong>Objective 2 (Exploratory Data Analysis):</strong> Generate automated visual analytics including target distributions (raw vs. log-transformed) and correlation heatmaps.</li>
             <li><strong>Objective 3 (Feature Engineering):</strong> Engineer domain-informed ratio features (`RoomsPerHousehold` and `PopPerHousehold`), apply log stabilization, and implement leak-free standard scaling.</li>
             <li><strong>Objective 4 (Cross-Validation Benchmarking):</strong> Benchmark six distinct regression algorithms across 5-fold cross-validation under identical random seeds.</li>
-            <li><strong>Objective 5 (Performance Evaluation):</strong> Evaluate out-of-sample generalization using Test RMSE, MAE, and $R^2$, paired with residual analysis and feature importance extraction.</li>
+            <li><strong>Objective 5 (Performance Evaluation):</strong> Evaluate out-of-sample generalization using Test RMSE, MAE, and R², paired with residual analysis and feature importance extraction.</li>
             <li><strong>Objective 6 (Production Web Application):</strong> Deliver a high-performance Streamlit dashboard featuring California city presets, model consensus visualization, interactive PyDeck mapping, and batch CSV processing.</li>
             <li><strong>Objective 7 (Unit Testing Suite):</strong> Establish an automated test suite (`pytest`) verifying data integrity, feature transformations, split ratios, and prediction bounds.</li>
         </ul>
@@ -767,9 +793,9 @@
         <h2 class="subsection-title">6.2 Engineered Features</h2>
         <p>To eliminate multicollinearity and capture demographic density:</p>
         <ul>
-            <li><code>RoomsPerHousehold</code>: $\text{AveRooms} / \max(\text{HouseAge}, 1.0)$ &mdash; normalized room availability per unit building age.</li>
-            <li><code>PopPerHousehold</code>: $\text{Population} / \max(\text{AveOccup}, 1.0)$ &mdash; residential occupancy saturation.</li>
-            <li><code>LogTarget</code>: $\ln(1 + \text{MedHouseVal})$ &mdash; target variable variance stabilizer.</li>
+            <li><code>RoomsPerHousehold</code>: AveRooms / max(HouseAge, 1.0) &mdash; normalized room availability per unit building age.</li>
+            <li><code>PopPerHousehold</code>: Population / max(AveOccup, 1.0) &mdash; residential occupancy saturation.</li>
+            <li><code>LogTarget</code>: ln(1 + MedHouseVal) &mdash; target variable variance stabilizer.</li>
         </ul>
 
         <h2 class="subsection-title">6.3 Libraries & Hardware Stack</h2>
@@ -795,10 +821,10 @@
             The project architecture guarantees complete separation between training and evaluation via the <strong>D.A.T.A.</strong> protocol:
         </p>
         <ol>
-            <li><strong>Discover (Data Ingestion):</strong> Automated retrieval of the raw dataset via <code>sklearn.datasets.fetch_california_housing</code> into immutable local storage at <code>data/raw/housing.csv</code>.</li>
+            <li><strong>Discover (Data Ingestion):</strong> Automated retrieval of raw dataset into immutable local storage at <code>data/raw/housing.csv</code>.</li>
             <li><strong>Analyze (Feature Engineering & Scaling):</strong> Automated generation of correlation heatmaps and target distributions; extraction of interaction ratios; natural log target transformation; fitting of <code>StandardScaler</code> strictly on training splits.</li>
             <li><strong>Train (Model Training with 5-Fold CV):</strong> Concurrent training of six regression models using 5-fold cross-validation; hyperparameters managed via centralized <code>config.yaml</code>. Serialization of fitted estimators to <code>models/*.joblib</code>.</li>
-            <li><strong>Assess (Model Assessment & Reporting):</strong> Out-of-sample evaluation on the 20% holdout test set (4,128 block groups) computing RMSE, MAE, and $R^2$; generation of predicted-vs-actual scatter plots, residual histograms, and automated reporting.</li>
+            <li><strong>Assess (Model Assessment & Reporting):</strong> Out-of-sample evaluation on the 20% holdout test set (4,128 block groups) computing RMSE, MAE, and R²; generation of predicted-vs-actual scatter plots and automated reporting.</li>
         </ol>
 
         <h2 class="subsection-title">7.2 Mathematical Foundations</h2>
@@ -818,9 +844,9 @@
             min<sub>w</sub> &frac12; ||y - Xw||<sub>2</sub><sup>2</sup> + &alpha; &sum;<sub>j=1</sub><sup>p</sup> |w<sub>j</sub>|
         </div>
 
-        <p><strong>4. Random Forest Regressor (Bagging):</strong> Aggregates $B=100$ independent decision trees:</p>
+        <p><strong>4. Random Forest Regressor (Bagging):</strong> Aggregates B=100 independent decision trees:</p>
         <div class="math-box">
-            ŷ(x) = &frac1B; &sum;<sub>b=1</sub><sup>B</sup> T<sub>b</sub>(x)
+            ŷ(x) = (1 / B) &times; &sum;<sub>b=1</sub><sup>B</sup> T<sub>b</sub>(x)
         </div>
 
         <p><strong>5. XGBoost (Extreme Gradient Boosting):</strong> Optimizes regularized 2nd-order Taylor loss expansion:</p>
@@ -843,7 +869,7 @@
             The system is organized into a modular, production-ready Python package:
         </p>
 
-        <div class="code-block">
+        <pre class="code-block">
 House-Price-Prediction/
 ├── config.yaml             # Centralized pipeline hyperparameters & paths
 ├── requirements.txt        # Pinned project dependencies
@@ -863,6 +889,8 @@ House-Price-Prediction/
 │   └── registry.md         # Markdown registry of cross-validation results
 ├── reports/
 │   ├── final_report.md     # Auto-generated results summary
+│   ├── Project_Report.pdf  # Formal compiled PDF submission
+│   ├── Project_Report.html # Styled printable HTML report
 │   ├── Project_Report.md   # Comprehensive SPPU mini project report
 │   └── eda/                # 11 generated evaluation plots (PNG)
 ├── src/
@@ -874,14 +902,14 @@ House-Price-Prediction/
     ├── test_ingest.py      # Dataset schema and completeness tests
     ├── test_features.py    # Leakage, NaN, and split ratio unit tests
     └── test_models.py      # Prediction length, validity, and baseline benchmarks
-        </div>
+        </pre>
 
         <h2 class="subsection-title">Core Modular Components:</h2>
         <ul>
             <li><code>src/data/ingest.py</code>: Handles safe dataset acquisition and directory scaffolding.</li>
             <li><code>src/features/engineer.py</code>: Implements ratio engineering, log-transformation, and StandardScaler fitting.</li>
             <li><code>src/models/train.py</code>: Executes multi-model 5-fold cross-validation and records metrics into <code>models/registry.md</code>.</li>
-            <li><code>src/evaluate/metrics.py</code>: Computes test set RMSE, MAE, and $R^2$; generates residual and scatter plots.</li>
+            <li><code>src/evaluate/metrics.py</code>: Computes test set RMSE, MAE, and R²; generates residual and scatter plots.</li>
             <li><code>app.py</code>: Delivers an interactive 4-tab Streamlit dashboard with real-time valuation, consensus comparison, interactive PyDeck GIS maps, and batch CSV valuation.</li>
         </ul>
     </div>
@@ -970,7 +998,12 @@ House-Price-Prediction/
             <li><strong>Average Occupancy (<code>AveOccup</code>, ~9.2%):</strong> High household density correlates with lower per-capita property valuations.</li>
             <li><strong>Building Age (<code>HouseAge</code>, ~5.8%):</strong> Older historic neighborhoods in coastal metropolitan centers retain higher valuations.</li>
         </ul>
+    </div>
 
+    <!-- ======================================================== -->
+    <!-- PAGE 10: WEB APP, CONCLUSION & REFERENCES                -->
+    <!-- ======================================================== -->
+    <div class="page">
         <h2 class="subsection-title">9.3 Interactive Web Application Deployment</h2>
         <p>
             The trained models and preprocessing artifacts are deployed in a production-grade <strong>Streamlit</strong> application (<code>app.py</code>):
@@ -981,24 +1014,19 @@ House-Price-Prediction/
             <li><strong>Tab 3 (EDA Explorer):</strong> Interactive geospatial scatter plot of California housing values and correlation heatmaps.</li>
             <li><strong>Tab 4 (Batch Inference):</strong> Drag-and-drop CSV upload supporting multi-property valuation with one-click export.</li>
         </ul>
-    </div>
 
-    <!-- ======================================================== -->
-    <!-- PAGE 10: CONCLUSION & REFERENCES                         -->
-    <!-- ======================================================== -->
-    <div class="page page-break">
-        <h1 class="section-title">10. Conclusion</h1>
+        <h1 class="section-title" style="margin-top: 25px;">10. Conclusion</h1>
         <p>
             The <strong>California House Price Prediction & Real Estate Valuation System</strong> successfully fulfills all curricular requirements of the SPPU Third Year Machine Learning laboratory:
         </p>
         <ol>
-            <li><strong>Demonstrated Superiority of Non-Linear Boosting:</strong> Proved that <strong>XGBoost</strong> ($R^2 = 0.8391$, $RMSE = 0.1424$) vastly outperforms classical parametric regressions ($R^2 = 0.6361$) by modeling complex spatial autocorrelation.</li>
+            <li><strong>Demonstrated Superiority of Non-Linear Boosting:</strong> Proved that <strong>XGBoost</strong> (R² = 0.8391, RMSE = 0.1424) vastly outperforms classical parametric regressions (R² = 0.6361) by modeling complex spatial autocorrelation.</li>
             <li><strong>Mitigated Target Skewness:</strong> Validated that natural log target transformation prevents high-value outliers from destabilizing squared-error gradients.</li>
             <li><strong>Guaranteed Zero-Leakage Pipeline:</strong> Enforced rigorous isolation between data discovery, feature scaling, 5-fold cross-validation, and final testing.</li>
             <li><strong>Delivered Full-Stack Utility:</strong> Transitioned serialized machine learning models into an interactive, high-performance web dashboard accessible to end-users.</li>
         </ol>
 
-        <h2 class="subsection-title" style="margin-top: 30px;">References</h2>
+        <h2 class="subsection-title" style="margin-top: 25px;">References</h2>
         <ol>
             <li>Pace, R. K., & Barry, R. (1997). <em>Sparse Spatial Autoregressions</em>. Statistics & Probability Letters, 33(3), 291-297.</li>
             <li>Chen, T., & Guestrin, C. (2016). <em>XGBoost: A Scalable Tree Boosting System</em>. Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 785-794.</li>
