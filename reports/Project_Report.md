@@ -7,8 +7,8 @@
 **Affiliated University:** Savitribai Phule Pune University (SPPU)  
 **Academic Year:** 2026-27 (Semester-I)  
 **Class & Division:** Third Year Computer Engineering (TY Div A)  
-**Submitted By:** Krushna Hajare  
-**Roll No:** CS3147  
+**Submitted By:** Harshdeep Singh  
+**Roll No:** CS3149  
 
 ---
 
@@ -49,7 +49,7 @@
 * **Affiliated University:** Savitribai Phule Pune University (SPPU)
 * **Class & Division:** Third Year Computer Engineering (TY Div A), Academic Year 2026-27 (Semester-I)
 * **Course & Lab:** Machine Learning Laboratory (Course Code: 310246)
-* **Candidate:** Krushna Hajare (Roll No: CS3147)
+* **Candidate:** Harshdeep Singh (Roll No: CS3149)
 
 ---
 
