@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Project Report — California House Price Prediction</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+        @page {
+            size: A4;
+            margin: 20mm 18mm 20mm 18mm;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+
+        .document-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+        }
+
+        .page {
+            padding: 24mm 20mm 20mm 20mm;
+            min-height: 297mm;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .page-break {
+            page-break-after: always;
+            break-after: page;
+        }
+
+        /* ---------------------------------------------------- */
+        /* Cover Page Styling */
+        /* ---------------------------------------------------- */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            min-height: 297mm;
+            box-sizing: border-box;
+            padding: 16mm 14mm;
+        }
+
+        .cover-border {
+            border: 3px double #1e3a8a;
+            padding: 18mm 14mm;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .college-header {
+            margin-bottom: 25px;
+        }
+
+        .college-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #0f172a;
+            text-transform: uppercase;
+            margin: 4px 0;
+        }
+
+        .college-sub {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #334155;
+            letter-spacing: 1px;
+            margin: 2px 0;
+        }
+
+        .dept-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-top: 15px;
+            border-bottom: 1.5px solid #1e3a8a;
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .project-badge {
+            margin: 35px 0 10px 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .project-on {
+            font-size: 1rem;
+            font-style: italic;
+            color: #64748b;
+            margin: 6px 0;
+        }
+
+        .project-name {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #1e3a8a;
+            line-height: 1.35;
+            margin: 15px auto;
+            max-width: 90%;
+        }
+
+        .student-details {
+            margin: 35px 0;
+        }
+
+        .submitted-by {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+
+        .candidate-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 4px 0;
+        }
+
+        .roll-no {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .academic-footer {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: #334155;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* ---------------------------------------------------- */
+        /* Table of Contents Styling */
+        /* ---------------------------------------------------- */
+        .toc-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .toc-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #1e3a8a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .toc-sub {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .toc-box {
+            background: #1e3a8a;
+            color: #ffffff;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.05rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            padding: 8px 4px;
+            font-size: 0.95rem;
+            border-bottom: 1px dotted #cbd5e1;
+        }
+
+        .toc-item.level-1 {
+            font-weight: 600;
+            color: #0f172a;
+            padding-top: 10px;
+        }
+
+        .toc-item.level-2 {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .toc-dots {
+            flex: 1;
+            border-bottom: 1px dotted #94a3b8;
+            margin: 0 10px;
+        }
+
+        .toc-page {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* ---------------------------------------------------- */
+        /* General Document Headings & Typography */
+        /* ---------------------------------------------------- */
+        h1.section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 14px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 6px;
+        }
+
+        h2.subsection-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        h3.subsubsection-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #334155;
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            text-align: justify;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        /* ---------------------------------------------------- */
+        /* Highlight Callout Boxes */
+        /* ---------------------------------------------------- */
+        .callout-box {
+            border-left: 4px solid #1e3a8a;
+            background: #f1f5f9;
+            padding: 12px 16px;
+            margin: 18px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .callout-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 4px;
+        }
+
+        .callout-text {
+            font-size: 0.9rem;
+            color: #334155;
+            margin: 0;
+        }
+
+        /* ---------------------------------------------------- */
+        /* Tables */
+        /* ---------------------------------------------------- */
+        table.custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.88rem;
+        }
+
+        table.custom-table th {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 9px 12px;
+            text-align: left;
+            border: 1px solid #1e3a8a;
+        }
+
+        table.custom-table td {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+        }
+
+        table.custom-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .badge-green {
+            background: #dcfce7;
+            color: #15803d;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.82rem;
+            border: 1px solid #86efac;
+        }
+
+        .badge-blue {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.82rem;
+            border: 1px solid #93c5fd;
+        }
+
+        /* ---------------------------------------------------- */
+        /* Mathematical Formula Boxes */
+        /* ---------------------------------------------------- */
+        .math-box {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px 18px;
+            margin: 12px 0 16px 0;
+            font-family: 'Merriweather', serif;
+            font-size: 0.95rem;
+            color: #0f172a;
+            text-align: center;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        ul, ol {
+            margin: 0 0 14px 0;
+            padding-left: 24px;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 6px;
+            text-align: justify;
+        }
+
+        .code-block {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin: 14px 0;
+            line-height: 1.45;
+            overflow-x: auto;
+        }
+
+        /* Print Specifics */
+        @media print {
+            body {
+                background: none;
+            }
+            .document-container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            .page {
+                min-height: auto;
+                padding: 18mm 16mm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="document-container">
+
+    <!-- ======================================================== -->
+    <!-- PAGE 1: COVER PAGE                                       -->
+    <!-- ======================================================== -->
+    <div class="page cover-page page-break">
+        <div class="cover-border">
+            <div class="college-header">
+                <div class="college-title">JSPM's</div>
+                <div class="college-title" style="font-size: 1.45rem;">Rajarshi Shahu College of Engineering</div>
+                <div class="college-sub">TATHAWADE, PUNE-411033</div>
+                <div class="dept-title">DEPARTMENT OF COMPUTER ENGINEERING</div>
+            </div>
+
+            <div>
+                <div class="project-badge">Mini Project</div>
+                <div class="project-on">on</div>
+                <div class="project-name">"California House Price Prediction & Real Estate Valuation System"</div>
+            </div>
+
+            <div class="student-details">
+                <div class="submitted-by">-Submitted by-</div>
+                <div class="candidate-name">Krushna Hajare</div>
+                <div class="roll-no">Roll No: CS3147</div>
+            </div>
+
+            <div class="academic-footer">
+                <div><strong>Class and Division:</strong> TY Div A</div>
+                <div><strong>Course:</strong> Machine Learning (Course Code: 310246)</div>
+                <div><strong>Academic Year:</strong> 2026-27</div>
+                <div><strong>(Semester-I)</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- PAGE 2: TABLE OF CONTENTS                                -->
+    <!-- ======================================================== -->
+    <div class="page page-break">
+        <div class="toc-header">
+            <div class="toc-title">REPORT CONTENTS</div>
+            <div class="toc-sub">In accordance with SPPU Computer Engineering Mini Project Guidelines</div>
+        </div>
+
+        <div class="toc-box">TABLE OF CONTENTS</div>
+
+        <div class="toc-list">
+            <div class="toc-item level-1">
+                <span>1. Title & Details</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 3</span>
+            </div>
+            <div class="toc-item level-1">
+                <span>2. Abstract</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 3</span>
+            </div>
+            <div class="toc-item level-1">
+                <span>3. Introduction</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 4</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>3.1 Background & Motivation</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 4</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>3.2 The Need for Automated Valuation Models (AVMs)</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 4</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>3.3 Curriculum Alignment with SPPU Machine Learning Lab</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 4</span>
+            </div>
+            <div class="toc-item level-1">
+                <span>4. Problem Statement</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 5</span>
+            </div>
+            <div class="toc-item level-1">
+                <span>5. Objectives</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 5</span>
+            </div>
+            <div class="toc-item level-1">
+                <span>6. Data set and Libraries required</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 6</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>6.1 California Housing Dataset</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 6</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>6.2 Engineered Features</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 6</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>6.3 Libraries & Hardware Stack</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 6</span>
+            </div>
+            <div class="toc-item level-1">
+                <span>7. Approach / Methodology</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 7</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>7.1 End-to-End Pipeline (D.A.T.A. Protocol)</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 7</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>7.2 Mathematical Foundations</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 8</span>
+            </div>
+            <div class="toc-item level-1">
+                <span>8. Implementation</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 9</span>
+            </div>
+            <div class="toc-item level-1">
+                <span>9. Results & Experimental Analysis</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 10</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>9.1 Regression Benchmark Results</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 10</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>9.2 Feature Importance Analysis</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 11</span>
+            </div>
+            <div class="toc-item level-2">
+                <span>9.3 Interactive Web Application Deployment</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 11</span>
+            </div>
+            <div class="toc-item level-1">
+                <span>10. Conclusion & References</span>
+                <span class="toc-dots"></span>
+                <span class="toc-page">Page 12</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- PAGE 3: TITLE & ABSTRACT                                 -->
+    <!-- ======================================================== -->
+    <div class="page page-break">
+        <h1 class="section-title">1. Title</h1>
+        <p><strong>Project Title:</strong> California House Price Prediction & Real Estate Valuation System</p>
+        <p><strong>Academic Department:</strong> Department of Computer Engineering, JSPM's Rajarshi Shahu College of Engineering, Tathawade, Pune-411033</p>
+        <p><strong>Affiliated University:</strong> Savitribai Phule Pune University (SPPU)</p>
+        <p><strong>Class & Division:</strong> Third Year Computer Engineering (TY Div A), Academic Year 2026-27 (Semester-I)</p>
+        <p><strong>Course & Lab:</strong> Machine Learning (Course Code: 310246)</p>
+        <p><strong>Candidate:</strong> Krushna Hajare (Roll No: CS3147)</p>
+
+        <h1 class="section-title" style="margin-top: 30px;">2. Abstract</h1>
+        <p>
+            In modern macroeconomics and municipal finance, real estate appraisal is vital for mortgage underwriting, property taxation, and investment portfolios. Traditional manual appraisal methodologies are prone to subjective human bias, localized transaction infrequency, and poor scalability. Furthermore, standard linear econometric techniques struggle to model complex spatial autocorrelation and non-linear interactions between demographic indicators and physical housing characteristics.
+        </p>
+        <p>
+            This mini project presents an end-to-end, mathematically grounded, reproducible Machine Learning pipeline: the <strong>California House Price Prediction & Real Estate Valuation System</strong>. Built upon the benchmark California Housing dataset (20,640 census block groups derived from the 1990 U.S. Census), the project implements the structured <strong>D.A.T.A. Protocol (Discover &rarr; Analyze &rarr; Train &rarr; Assess)</strong> to enforce pipeline isolation, prevent data leakage, and ensure model robustness.
+        </p>
+        <p>The project benchmarks six distinct machine learning algorithms across standardized 5-fold cross-validation and a 20% holdout test split:</p>
+        <ol>
+            <li><strong>Median Baseline Regressor:</strong> Empirical lower bound ($RMSE = 0.3558$, $R^2 = -0.0042$).</li>
+            <li><strong>Multiple Linear Regression:</strong> Parametric OLS baseline ($RMSE = 0.2142$, $R^2 = 0.6361$).</li>
+            <li><strong>Ridge Regression:</strong> $L_2$-penalized regularizer mitigating multicollinearity ($RMSE = 0.2142$, $R^2 = 0.6361$).</li>
+            <li><strong>Lasso Regression:</strong> $L_1$-penalized sparse regularizer ($RMSE = 0.2816$, $R^2 = 0.3709$).</li>
+            <li><strong>Random Forest Regressor:</strong> Bagging ensemble of 100 deep decision trees ($RMSE = 0.1611$, $R^2 = 0.7941$).</li>
+            <li><strong>XGBoost Regressor:</strong> Second-order gradient boosted decision trees ($RMSE = 0.1424$, $R^2 = 0.8391$).</li>
+        </ol>
+
+        <div class="callout-box">
+            <div class="callout-title">LEAK-FREE D.A.T.A. PROTOCOL PRINCIPLE</div>
+            <div class="callout-text">
+                By enforcing a strict boundary between feature extraction, standard scaling, and model fitting, the pipeline guarantees that test set evaluations remain strictly out-of-sample. Target skewness is addressed using natural logarithmic transformation ($\ln(1 + y)$), ensuring stable optimization and unbiased error distributions.
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- PAGE 4: INTRODUCTION                                     -->
+    <!-- ======================================================== -->
+    <div class="page page-break">
+        <h1 class="section-title">3. Introduction</h1>
+        
+        <h2 class="subsection-title">3.1 Background & Motivation</h2>
+        <p>
+            Housing valuation represents one of the largest capital asset segments in contemporary society. In real estate markets, property prices are dictated by a complex combination of micro-demographics (e.g., median household income, block occupancy), physical infrastructure (e.g., average room count, building age), and macroeconomic trends. Accurate property price estimation protects financial institutions from over-leveraging and empowers home buyers with data-driven transparency.
+        </p>
+
+        <h2 class="subsection-title">3.2 The Need for Automated Valuation Models (AVMs)</h2>
+        <p>
+            Automated Valuation Models (AVMs) leverage statistical learning to process continuous real estate indicators and output instant, reliable home appraisals. Traditional appraisal reports rely on manual comparables ("comps"), which are slow and subjective. Machine learning enables real-time valuation across thousands of properties simultaneously, incorporating multi-dimensional spatial dynamics that linear equations fail to capture.
+        </p>
+
+        <h2 class="subsection-title">3.3 Curriculum Alignment with SPPU Machine Learning Lab</h2>
+        <p>
+            This mini project holistically integrates core algorithmic paradigms prescribed in the Savitribai Phule Pune University (SPPU) Third Year Computer Engineering Machine Learning syllabus:
+        </p>
+
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th style="width: 28%;">Curricular Topic</th>
+                    <th style="width: 36%;">Implemented Technique</th>
+                    <th style="width: 36%;">Curricular Focus & Project Scope</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Linear Models & OLS</strong></td>
+                    <td>Multiple Linear Regression</td>
+                    <td>Parametric estimation, closed-form normal equations, and coefficient significance.</td>
+                </tr>
+                <tr>
+                    <td><strong>Regularization</strong></td>
+                    <td>Ridge ($L_2$) & Lasso ($L_1$)</td>
+                    <td>Penalized cost optimization; combating collinearity and coefficient shrinkage.</td>
+                </tr>
+                <tr>
+                    <td><strong>Ensemble Learning (Bagging)</strong></td>
+                    <td>Random Forest Regressor</td>
+                    <td>Bootstrap aggregation of 100 decorrelated trees; non-linear boundary estimation.</td>
+                </tr>
+                <tr>
+                    <td><strong>Ensemble Learning (Boosting)</strong></td>
+                    <td>XGBoost Regressor</td>
+                    <td>2nd-order Taylor expansion loss minimization, shrinkage rate, and tree depth tuning.</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Preprocessing</strong></td>
+                    <td>StandardScaler, Log-Transforms</td>
+                    <td>Normalizing heteroscedastic feature scales and inverting log-target distributions.</td>
+                </tr>
+                <tr>
+                    <td><strong>Model Evaluation</strong></td>
+                    <td>5-Fold Cross-Validation, RMSE, MAE, R²</td>
+                    <td>Out-of-sample generalization metrics, residual normality checks, and feature ranking.</td>
+                </tr>
+                <tr>
+                    <td><strong>Full-Stack Deployment</strong></td>
+                    <td>Interactive Streamlit GUI</td>
+                    <td>Real-time user inference, PyDeck GIS mapping, and batch CSV valuation engine.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- PAGE 5: PROBLEM STATEMENT & OBJECTIVES                   -->
+    <!-- ======================================================== -->
+    <div class="page page-break">
+        <h1 class="section-title">4. Problem Statement</h1>
+        <p>
+            Predicting real estate prices from multi-source census and geographic data presents acute computational and statistical challenges:
+        </p>
+        <ul>
+            <li><strong>Non-Linear Spatial Autocorrelation:</strong> Latitude and longitude coordinates exhibit severe non-linear pricing effects (e.g., steep price premiums along coastal California pockets compared to the Central Valley). Simple linear models cannot capture localized geographic boundaries.</li>
+            <li><strong>Severe Target Skewness:</strong> Housing price distributions feature heavy right tails with high-value outliers and artificial census capping ($500,000+), causing standard regression loss functions to produce skewed residuals.</li>
+            <li><strong>Feature Collinearity:</strong> Total rooms, bedrooms, and population are heavily correlated with district density, requiring domain-informed ratio features rather than raw aggregate counts.</li>
+            <li><strong>Deployment Gap:</strong> Academic machine learning code frequently remains confined to static notebooks, lacking interactive interfaces suitable for end-user property assessment.</li>
+        </ul>
+
+        <h1 class="section-title" style="margin-top: 25px;">5. Objectives</h1>
+        <ul>
+            <li><strong>Objective 1 (Data Ingestion):</strong> Implement automated ingestion of the California Housing dataset (20,640 records) with reproducible disk caching.</li>
+            <li><strong>Objective 2 (Exploratory Data Analysis):</strong> Generate automated visual analytics including target distributions (raw vs. log-transformed) and correlation heatmaps.</li>
+            <li><strong>Objective 3 (Feature Engineering):</strong> Engineer domain-informed ratio features (`RoomsPerHousehold` and `PopPerHousehold`), apply log stabilization, and implement leak-free standard scaling.</li>
+            <li><strong>Objective 4 (Cross-Validation Benchmarking):</strong> Benchmark six distinct regression algorithms across 5-fold cross-validation under identical random seeds.</li>
+            <li><strong>Objective 5 (Performance Evaluation):</strong> Evaluate out-of-sample generalization using Test RMSE, MAE, and $R^2$, paired with residual analysis and feature importance extraction.</li>
+            <li><strong>Objective 6 (Production Web Application):</strong> Deliver a high-performance Streamlit dashboard featuring California city presets, model consensus visualization, interactive PyDeck mapping, and batch CSV processing.</li>
+            <li><strong>Objective 7 (Unit Testing Suite):</strong> Establish an automated test suite (`pytest`) verifying data integrity, feature transformations, split ratios, and prediction bounds.</li>
+        </ul>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- PAGE 6: DATASET & LIBRARIES                              -->
+    <!-- ======================================================== -->
+    <div class="page page-break">
+        <h1 class="section-title">6. Data set and Libraries required</h1>
+        
+        <h2 class="subsection-title">6.1 Dataset: California Housing Dataset</h2>
+        <p>
+            The system is trained and evaluated on the benchmark California Housing dataset (Pace & Barry, 1997), encompassing 20,640 block-group districts derived from the 1990 U.S. Census:
+        </p>
+
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Feature Name</th>
+                    <th>Type</th>
+                    <th>Range / Mean</th>
+                    <th>Description & Content</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>MedInc</code></td>
+                    <td>Float</td>
+                    <td>0.50 – 15.00 (3.87)</td>
+                    <td>Median income in block group (in tens of thousands of USD).</td>
+                </tr>
+                <tr>
+                    <td><code>HouseAge</code></td>
+                    <td>Float</td>
+                    <td>1.0 – 52.0 (28.6)</td>
+                    <td>Median age of residential buildings within the block (years).</td>
+                </tr>
+                <tr>
+                    <td><code>AveRooms</code></td>
+                    <td>Float</td>
+                    <td>0.85 – 141.9 (5.43)</td>
+                    <td>Average number of rooms per household dwelling.</td>
+                </tr>
+                <tr>
+                    <td><code>AveBedrms</code></td>
+                    <td>Float</td>
+                    <td>0.33 – 34.07 (1.10)</td>
+                    <td>Average number of bedrooms per household dwelling.</td>
+                </tr>
+                <tr>
+                    <td><code>Population</code></td>
+                    <td>Float</td>
+                    <td>3.0 – 35,682 (1,425)</td>
+                    <td>Total population residing within the census block group.</td>
+                </tr>
+                <tr>
+                    <td><code>AveOccup</code></td>
+                    <td>Float</td>
+                    <td>0.69 – 1,243 (3.07)</td>
+                    <td>Average number of household members residing together.</td>
+                </tr>
+                <tr>
+                    <td><code>Latitude</code></td>
+                    <td>Float</td>
+                    <td>32.54° – 41.95° N</td>
+                    <td>Block group geographic latitude coordinate.</td>
+                </tr>
+                <tr>
+                    <td><code>Longitude</code></td>
+                    <td>Float</td>
+                    <td>-124.35° – -114.31° W</td>
+                    <td>Block group geographic longitude coordinate.</td>
+                </tr>
+                <tr>
+                    <td><strong><code>MedHouseVal</code></strong></td>
+                    <td>Float</td>
+                    <td>0.15 – 5.00 (2.07)</td>
+                    <td><strong>Target:</strong> Median house value (in $100,000 USD).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="subsection-title">6.2 Engineered Features</h2>
+        <p>To eliminate multicollinearity and capture demographic density:</p>
+        <ul>
+            <li><code>RoomsPerHousehold</code>: $\text{AveRooms} / \max(\text{HouseAge}, 1.0)$ &mdash; normalized room availability per unit building age.</li>
+            <li><code>PopPerHousehold</code>: $\text{Population} / \max(\text{AveOccup}, 1.0)$ &mdash; residential occupancy saturation.</li>
+            <li><code>LogTarget</code>: $\ln(1 + \text{MedHouseVal})$ &mdash; target variable variance stabilizer.</li>
+        </ul>
+
+        <h2 class="subsection-title">6.3 Libraries & Hardware Stack</h2>
+        <ul>
+            <li><strong>Programming Language:</strong> Python 3.14 / 3.10+ (64-bit)</li>
+            <li><strong>Dashboard & Deployment:</strong> Streamlit (&ge; 1.35.0), PyDeck (&ge; 0.9.0)</li>
+            <li><strong>Scientific Computing:</strong> NumPy (&ge; 1.26.0), Pandas (&ge; 2.0.0), SciPy (&ge; 1.13.0)</li>
+            <li><strong>Machine Learning & Boosting:</strong> Scikit-Learn (&ge; 1.4.0), XGBoost (&ge; 1.7.0), Joblib (&ge; 1.2.0)</li>
+            <li><strong>Visualization:</strong> Matplotlib (&ge; 3.8.0), Seaborn (&ge; 0.12.0)</li>
+            <li><strong>Testing & Configuration:</strong> Pytest (&ge; 7.2.0), PyYAML (&ge; 6.0), Tabulate (&ge; 0.9.0)</li>
+            <li><strong>Hardware Requirements:</strong> Standard Intel Core i5/i7 or AMD Ryzen CPU, 8 GB RAM, 2 GB Disk Space.</li>
+        </ul>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- PAGE 7: APPROACH / METHODOLOGY                           -->
+    <!-- ======================================================== -->
+    <div class="page page-break">
+        <h1 class="section-title">7. Approach/ Methodology</h1>
+        
+        <h2 class="subsection-title">7.1 End-to-End Pipeline (D.A.T.A. Protocol)</h2>
+        <p>
+            The project architecture guarantees complete separation between training and evaluation via the <strong>D.A.T.A.</strong> protocol:
+        </p>
+        <ol>
+            <li><strong>Discover (Data Ingestion):</strong> Automated retrieval of the raw dataset via <code>sklearn.datasets.fetch_california_housing</code> into immutable local storage at <code>data/raw/housing.csv</code>.</li>
+            <li><strong>Analyze (Feature Engineering & Scaling):</strong> Automated generation of correlation heatmaps and target distributions; extraction of interaction ratios; natural log target transformation; fitting of <code>StandardScaler</code> strictly on training splits.</li>
+            <li><strong>Train (Model Training with 5-Fold CV):</strong> Concurrent training of six regression models using 5-fold cross-validation; hyperparameters managed via centralized <code>config.yaml</code>. Serialization of fitted estimators to <code>models/*.joblib</code>.</li>
+            <li><strong>Assess (Model Assessment & Reporting):</strong> Out-of-sample evaluation on the 20% holdout test set (4,128 block groups) computing RMSE, MAE, and $R^2$; generation of predicted-vs-actual scatter plots, residual histograms, and automated reporting.</li>
+        </ol>
+
+        <h2 class="subsection-title">7.2 Mathematical Foundations</h2>
+        
+        <p><strong>1. Multiple Linear Regression (Ordinary Least Squares):</strong></p>
+        <div class="math-box">
+            min<sub>w</sub> ||y - Xw||<sub>2</sub><sup>2</sup> &nbsp;&nbsp;&rArr;&nbsp;&nbsp; ŵ = (X<sup>T</sup>X)<sup>-1</sup> X<sup>T</sup>y
+        </div>
+
+        <p><strong>2. Ridge Regularization (L2 Penalty):</strong> Constrains coefficient norms to prevent collinear instability:</p>
+        <div class="math-box">
+            min<sub>w</sub> ||y - Xw||<sub>2</sub><sup>2</sup> + &alpha; ||w||<sub>2</sub><sup>2</sup> &nbsp;&nbsp;&rArr;&nbsp;&nbsp; ŵ = (X<sup>T</sup>X + &alpha;I)<sup>-1</sup> X<sup>T</sup>y
+        </div>
+
+        <p><strong>3. Lasso Regularization (L1 Penalty):</strong> Drives uninformative feature coefficients strictly to zero:</p>
+        <div class="math-box">
+            min<sub>w</sub> &frac12; ||y - Xw||<sub>2</sub><sup>2</sup> + &alpha; &sum;<sub>j=1</sub><sup>p</sup> |w<sub>j</sub>|
+        </div>
+
+        <p><strong>4. Random Forest Regressor (Bagging):</strong> Aggregates $B=100$ independent decision trees:</p>
+        <div class="math-box">
+            ŷ(x) = &frac1B; &sum;<sub>b=1</sub><sup>B</sup> T<sub>b</sub>(x)
+        </div>
+
+        <p><strong>5. XGBoost (Extreme Gradient Boosting):</strong> Optimizes regularized 2nd-order Taylor loss expansion:</p>
+        <div class="math-box">
+            &Lscr;<sup>(t)</sup> &approx; &sum;<sub>i=1</sub><sup>n</sup> [g<sub>i</sub> f<sub>t</sub>(x<sub>i</sub>) + &frac12; h<sub>i</sub> f<sub>t</sub><sup>2</sup>(x<sub>i</sub>)] + &gamma;T + &frac12;&lambda; &sum;<sub>j=1</sub><sup>T</sup> w<sub>j</sub><sup>2</sup>
+        </div>
+
+        <p><strong>6. Log-Target Inversion:</strong> Converts model log-predictions back into real USD price:</p>
+        <div class="math-box">
+            Price<sub>USD</sub> = [exp(ŷ<sub>log</sub>) - 1] &times; 100,000
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- PAGE 8: IMPLEMENTATION                                   -->
+    <!-- ======================================================== -->
+    <div class="page page-break">
+        <h1 class="section-title">8. Implementation</h1>
+        <p>
+            The system is organized into a modular, production-ready Python package:
+        </p>
+
+        <div class="code-block">
+House-Price-Prediction/
+├── config.yaml             # Centralized pipeline hyperparameters & paths
+├── requirements.txt        # Pinned project dependencies
+├── main.py                 # Single-command orchestration entrypoint
+├── app.py                  # Production Streamlit analytical web dashboard
+├── data/
+│   ├── raw/housing.csv     # Immutable source CSV (20,640 records)
+│   └── processed/          # Scaled and engineered feature matrices
+├── models/
+│   ├── scaler.joblib       # Serialized StandardScaler
+│   ├── xgboost.joblib      # Champion model artifact (475 KB)
+│   ├── random_forest.joblib# Serialized Random Forest artifact (10.7 MB)
+│   ├── ridge.joblib        # Serialized Ridge artifact
+│   ├── linear_regression.joblib
+│   ├── lasso.joblib
+│   ├── baseline.joblib
+│   └── registry.md         # Markdown registry of cross-validation results
+├── reports/
+│   ├── final_report.md     # Auto-generated results summary
+│   ├── Project_Report.md   # Comprehensive SPPU mini project report
+│   └── eda/                # 11 generated evaluation plots (PNG)
+├── src/
+│   ├── data/ingest.py      # Phase 1: Automated dataset discovery
+│   ├── features/engineer.py# Phase 2: Ratios, log-transform, scaling, split
+│   ├── models/train.py     # Phase 3: 5-fold CV & joblib serialization
+│   └── evaluate/metrics.py # Phase 4: RMSE/MAE/R² metrics & plot generation
+└── tests/
+    ├── test_ingest.py      # Dataset schema and completeness tests
+    ├── test_features.py    # Leakage, NaN, and split ratio unit tests
+    └── test_models.py      # Prediction length, validity, and baseline benchmarks
+        </div>
+
+        <h2 class="subsection-title">Core Modular Components:</h2>
+        <ul>
+            <li><code>src/data/ingest.py</code>: Handles safe dataset acquisition and directory scaffolding.</li>
+            <li><code>src/features/engineer.py</code>: Implements ratio engineering, log-transformation, and StandardScaler fitting.</li>
+            <li><code>src/models/train.py</code>: Executes multi-model 5-fold cross-validation and records metrics into <code>models/registry.md</code>.</li>
+            <li><code>src/evaluate/metrics.py</code>: Computes test set RMSE, MAE, and $R^2$; generates residual and scatter plots.</li>
+            <li><code>app.py</code>: Delivers an interactive 4-tab Streamlit dashboard with real-time valuation, consensus comparison, interactive PyDeck GIS maps, and batch CSV valuation.</li>
+        </ul>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- PAGE 9: RESULTS & EXPERIMENTAL ANALYSIS                  -->
+    <!-- ======================================================== -->
+    <div class="page page-break">
+        <h1 class="section-title">9. Results</h1>
+        
+        <h2 class="subsection-title">9.1 Regression Benchmark Results</h2>
+        <p>
+            Evaluated on an identical 20% holdout test set (4,128 block groups) with 5-fold cross-validation on the training set:
+        </p>
+
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Model / Algorithm</th>
+                    <th>Test RMSE</th>
+                    <th>Test MAE</th>
+                    <th>Test R² Score</th>
+                    <th>5-Fold CV RMSE</th>
+                    <th>Train Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>XGBoost Regressor</strong> <span class="badge-green">Best</span></td>
+                    <td><strong>0.1424</strong></td>
+                    <td><strong>0.0998</strong></td>
+                    <td><strong>0.8391</strong></td>
+                    <td>0.1425 &plusmn; 0.0013</td>
+                    <td>4.1s</td>
+                </tr>
+                <tr>
+                    <td><strong>Random Forest Regressor</strong></td>
+                    <td>0.1611</td>
+                    <td>0.1138</td>
+                    <td>0.7941</td>
+                    <td>0.1602 &plusmn; 0.0016</td>
+                    <td>8.9s</td>
+                </tr>
+                <tr>
+                    <td><strong>Ridge Regression</strong></td>
+                    <td>0.2142</td>
+                    <td>0.1603</td>
+                    <td>0.6361</td>
+                    <td>0.2086 &plusmn; 0.0043</td>
+                    <td>3.4s</td>
+                </tr>
+                <tr>
+                    <td><strong>Linear Regression (OLS)</strong></td>
+                    <td>0.2142</td>
+                    <td>0.1603</td>
+                    <td>0.6361</td>
+                    <td>0.2086 &plusmn; 0.0043</td>
+                    <td>3.6s</td>
+                </tr>
+                <tr>
+                    <td><strong>Lasso Regression</strong></td>
+                    <td>0.2816</td>
+                    <td>0.2254</td>
+                    <td>0.3709</td>
+                    <td>0.2802 &plusmn; 0.0031</td>
+                    <td>0.3s</td>
+                </tr>
+                <tr>
+                    <td><strong>Median Baseline</strong></td>
+                    <td>0.3558</td>
+                    <td>0.2879</td>
+                    <td>-0.0042</td>
+                    <td>0.3576 &plusmn; 0.0035</td>
+                    <td>5.1s</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="subsection-title">9.2 Feature Importance & Driver Analysis</h2>
+        <p>
+            Analysis of tree-based split gains reveals the dominant real estate valuation drivers:
+        </p>
+        <ul>
+            <li><strong>Median Income (<code>MedInc</code>, ~52.4% Importance):</strong> Far and away the most dominant predictor. Higher neighborhood earning power directly correlates with elevated capital property values.</li>
+            <li><strong>Geographic Coordinates (<code>Latitude</code> & <code>Longitude</code>, ~28.6% Combined):</strong> Captures spatial proximity to the Pacific coast, Silicon Valley, and the Los Angeles basin.</li>
+            <li><strong>Average Occupancy (<code>AveOccup</code>, ~9.2%):</strong> High household density correlates with lower per-capita property valuations.</li>
+            <li><strong>Building Age (<code>HouseAge</code>, ~5.8%):</strong> Older historic neighborhoods in coastal metropolitan centers retain higher valuations.</li>
+        </ul>
+
+        <h2 class="subsection-title">9.3 Interactive Web Application Deployment</h2>
+        <p>
+            The trained models and preprocessing artifacts are deployed in a production-grade <strong>Streamlit</strong> application (<code>app.py</code>):
+        </p>
+        <ul>
+            <li><strong>Tab 1 (Interactive Estimator):</strong> California city presets (SF, LA, San Jose, San Diego, Sacramento, Fresno, Lake Tahoe) with instant multi-model consensus prediction bar charts and PyDeck maps.</li>
+            <li><strong>Tab 2 (Model Leaderboard):</strong> Live test set metrics, highlighted champion metrics, and feature importance bar plots.</li>
+            <li><strong>Tab 3 (EDA Explorer):</strong> Interactive geospatial scatter plot of California housing values and correlation heatmaps.</li>
+            <li><strong>Tab 4 (Batch Inference):</strong> Drag-and-drop CSV upload supporting multi-property valuation with one-click export.</li>
+        </ul>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- PAGE 10: CONCLUSION & REFERENCES                         -->
+    <!-- ======================================================== -->
+    <div class="page page-break">
+        <h1 class="section-title">10. Conclusion</h1>
+        <p>
+            The <strong>California House Price Prediction & Real Estate Valuation System</strong> successfully fulfills all curricular requirements of the SPPU Third Year Machine Learning laboratory:
+        </p>
+        <ol>
+            <li><strong>Demonstrated Superiority of Non-Linear Boosting:</strong> Proved that <strong>XGBoost</strong> ($R^2 = 0.8391$, $RMSE = 0.1424$) vastly outperforms classical parametric regressions ($R^2 = 0.6361$) by modeling complex spatial autocorrelation.</li>
+            <li><strong>Mitigated Target Skewness:</strong> Validated that natural log target transformation prevents high-value outliers from destabilizing squared-error gradients.</li>
+            <li><strong>Guaranteed Zero-Leakage Pipeline:</strong> Enforced rigorous isolation between data discovery, feature scaling, 5-fold cross-validation, and final testing.</li>
+            <li><strong>Delivered Full-Stack Utility:</strong> Transitioned serialized machine learning models into an interactive, high-performance web dashboard accessible to end-users.</li>
+        </ol>
+
+        <h2 class="subsection-title" style="margin-top: 30px;">References</h2>
+        <ol>
+            <li>Pace, R. K., & Barry, R. (1997). <em>Sparse Spatial Autoregressions</em>. Statistics & Probability Letters, 33(3), 291-297.</li>
+            <li>Chen, T., & Guestrin, C. (2016). <em>XGBoost: A Scalable Tree Boosting System</em>. Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 785-794.</li>
+            <li>Breiman, L. (2001). <em>Random Forests</em>. Machine Learning, 45(1), 5-32.</li>
+            <li>Pedregosa, F., et al. (2011). <em>Scikit-learn: Machine Learning in Python</em>. Journal of Machine Learning Research, 12, 2825-2830.</li>
+            <li>Hastie, T., Tibshirani, R., & Friedman, J. (2009). <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em>. Springer New York.</li>
+            <li>Bishop, C. M. (2006). <em>Pattern Recognition and Machine Learning</em>. Springer New York.</li>
+            <li>Savitribai Phule Pune University (SPPU). <em>Third Year Computer Engineering Syllabus & Machine Learning Laboratory Guidelines</em> (Course Code: 310246).</li>
+        </ol>
+    </div>
+
+</div>
+
+</body>
+</html>
